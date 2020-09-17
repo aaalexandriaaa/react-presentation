@@ -4,8 +4,10 @@ function RoomCard({ room }) {
   return (
     <>
       <div className="roomCard">
-        <h1>{room.name}</h1>
-        <h1>{room.occupancy}</h1>
+
+        <h3>Room Name: {room.name}</h3>
+
+        <p>Room Occupancy: {room.occupancy}</p>
         {/* <span>{room.schedule}</span> */}
       </div>
     </>

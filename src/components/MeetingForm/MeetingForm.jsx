@@ -9,7 +9,8 @@ class MeetingForm extends Component {
             endTime: '',
             peanutGallery: [''],
             meetingName: '',
-            agendaBody: ''
+            agendaBody: '',
+            meetingRoom: ''
         },
     }
 
@@ -66,12 +67,15 @@ class MeetingForm extends Component {
                         <div>
                             <div>
                                 <label htmlFor="name">Room Name</label>
-                                <input name="" id="name" type="text" value={this.state.formData.name} onChange={this.handleChange} required />
-                                <select value={this.state.value} onChange={this.handleChange}>
-                                    <option value="grapefruit">Grapefruit</option>
-                                    <option value="lime">Lime</option>
-                                    <option value="coconut">Coconut</option>
-                                    <option value="mango">Mango</option>
+                                {/* <input name="" id="name" type="text" value={this.state.formData.name} onChange={this.handleChange} required /> */}
+                                <select name="meetingRoom" onChange={this.handleChange} value={this.state.meetingRoom} required>
+                                    {this.props.rooms.map(room =>
+
+                                        <option value={room._id}>{room.name}</option>
+
+
+                                    )}
+
                                 </select>
                             </div>
                         </div>

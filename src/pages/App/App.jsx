@@ -9,6 +9,7 @@ import AllRooms from "../AllRooms/AllRooms"
 import CreateMeeting from "../CreateMeeting/CreateMeeting"
 import CreateRoom from "../CreateRoom/CreateRoom"
 import * as roomAPI from '../../services/room-api'
+import * as meetingAPI from '../../services/meeting-api'
 
 class App extends Component {
   state = {
@@ -38,10 +39,10 @@ class App extends Component {
     this.setState({ rooms })
   }
 
-  handleAddMeeting = async newRoomData => {
-    const newRoom = await roomAPI.create(newRoomData);
+  handleAddMeeting = async newMeetingData => {
+    const newMeeting = await meetingAPI.create(newMeetingData);
     this.setState(state => ({
-      rooms: [...state.rooms, newRoom]
+      meetings: [...state.meetings, newMeeting]
     }), () => this.props.history.push('/'));
   }
 
@@ -69,7 +70,7 @@ class App extends Component {
         <Route
           exact path="/createmeeting"
           render={() => (
-            <CreateMeeting 
+            <CreateMeeting
               handleAddMeeting={this.handleAddMeeting}
               state={this.state}
             />
