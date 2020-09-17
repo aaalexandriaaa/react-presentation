@@ -1,3 +1,3 @@
-# react-jwt-template
+# React Demonstration
 
-This is a template for a full-stack MERN application with built in user authentication utilizing JWT.
+This is a demonstration of the power of building a website in react.
