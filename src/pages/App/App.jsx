@@ -8,9 +8,11 @@ import "./App.css";
 import AllRooms from "../AllRooms/AllRooms"
 import CreateMeeting from "../CreateMeeting/CreateMeeting"
 import CreateRoom from "../CreateRoom/CreateRoom"
+import * as roomAPI from '../../services/room-api'
 
 class App extends Component {
   state = {
+    rooms: [],
     user: authService.getUser(),
   };
 
@@ -22,6 +24,13 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({ user: authService.getUser() });
   };
+
+  handleAddRoom = async newRoomData => {
+    const newRoom = await roomAPI.create(newRoomData);
+    this.setState(state => ({
+      rooms: [...state.rooms, newRoom]
+    }), () => this.props.history.push('/'));
+  }
 
   render() {
     const { user } = this.state
@@ -37,7 +46,9 @@ class App extends Component {
         <Route
           exact path="/createroom"
           render={() => (
-            <CreateRoom />
+            <CreateRoom 
+              handleAddRoom={this.handleAddRoom}
+            />
           )}
         />
         <Route
