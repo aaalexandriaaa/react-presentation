@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
+import MeetingForm from '../../components/MeetingForm/MeetingForm'
+
 class CreateMeeting extends Component {
-    state = {}
+    state = {
+
+    }
+
     render() {
         return (
             <>
-                <h1>Create Meeting</h1>
+                <h1>CREATE A MEETING</h1>
+                <MeetingForm
+                    handleAddMeeting={this.props.handleAddMeeting}
+                />
             </>
         );
     }
