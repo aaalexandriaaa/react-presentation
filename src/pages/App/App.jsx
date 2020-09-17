@@ -10,6 +10,8 @@ import CreateMeeting from "../CreateMeeting/CreateMeeting"
 import CreateRoom from "../CreateRoom/CreateRoom"
 import * as roomAPI from '../../services/room-api'
 import * as meetingAPI from '../../services/meeting-api'
+import ViewMeeting from "../ViewMeeting/ViewMeeting"
+import EditMeeting from "../EditMeeting/EditMeeting"
 
 class App extends Component {
   state = {
@@ -39,8 +41,8 @@ class App extends Component {
   }
 
   handleAddMeeting = async newMeetingData => {
-    const newMeeting = await meetingAPI.create(newMeetingData)
-    .then(() => this.props.history.push('/'))
+    await meetingAPI.create(newMeetingData)
+      .then(() => this.props.history.push('/'))
   }
 
   render() {
@@ -53,6 +55,14 @@ class App extends Component {
           render={() => (
             <AllRooms
               rooms={this.state.rooms}
+            />
+          )}
+        />
+        <Route
+          exact path="/editmeeting"
+          render={({ location }) => (
+            <EditMeeting
+              location={location}
             />
           )}
         />
@@ -70,6 +80,16 @@ class App extends Component {
             <CreateMeeting
               handleAddMeeting={this.handleAddMeeting}
               state={this.state}
+            />
+          )}
+        />
+        <Route
+          exact path="/viewmeeting"
+          render={({ location }) => (
+            <ViewMeeting
+              handleAddMeeting={this.handleAddMeeting}
+              state={this.state}
+              location={location}
             />
           )}
         />

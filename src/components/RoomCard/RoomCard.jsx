@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function RoomCard({ room }) {
   return (
@@ -13,7 +14,20 @@ function RoomCard({ room }) {
         <ul>
           {room.schedule.map((schedule) =>
 
-            <li key={schedule._id}>{schedule.meetingName}</li>
+            <li key={schedule._id}>
+              <Link
+                to={{
+                  pathname: '/viewmeeting',
+                  state: { schedule }
+                }}
+              >
+                {schedule.meetingName}
+              </Link>
+              : {schedule.startTime}-{schedule.endTime} <br />
+              Agenda: {schedule.agendaBody}<br />
+
+
+            </li>
 
           )}
         </ul>
