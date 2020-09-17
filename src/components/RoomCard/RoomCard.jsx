@@ -8,7 +8,15 @@ function RoomCard({ room }) {
         <h3>Room Name: {room.name}</h3>
 
         <p>Room Occupancy: {room.occupancy}</p>
-        {/* <span>{room.schedule}</span> */}
+
+        <p>Room Schedule: </p>
+        <ul>
+          {room.schedule.map((schedule) =>
+
+            <li key={schedule._id}>{schedule.meetingName}</li>
+
+          )}
+        </ul>
       </div>
     </>
   )
