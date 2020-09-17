@@ -32,9 +32,17 @@ class App extends Component {
     }), () => this.props.history.push('/'));
   }
 
+
   async componentDidMount() {
     const rooms = await roomAPI.getAll();
     this.setState({ rooms })
+  }
+
+  handleAddMeeting = async newRoomData => {
+    const newRoom = await roomAPI.create(newRoomData);
+    this.setState(state => ({
+      rooms: [...state.rooms, newRoom]
+    }), () => this.props.history.push('/'));
   }
 
   render() {
@@ -61,7 +69,10 @@ class App extends Component {
         <Route
           exact path="/createmeeting"
           render={() => (
-            <CreateMeeting />
+            <CreateMeeting 
+              handleAddMeeting={this.handleAddMeeting}
+              state={this.state}
+            />
           )}
         />
         <Route
