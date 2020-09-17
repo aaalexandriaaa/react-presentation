@@ -32,6 +32,11 @@ class App extends Component {
     }), () => this.props.history.push('/'));
   }
 
+  async componentDidMount() {
+    const rooms = await roomAPI.getAll();
+    this.setState({ rooms })
+  }
+
   render() {
     const { user } = this.state
     return (
@@ -40,13 +45,15 @@ class App extends Component {
         <Route
           exact path="/"
           render={() => (
-            <AllRooms />
+            <AllRooms
+              rooms={this.state.rooms}
+            />
           )}
         />
         <Route
           exact path="/createroom"
           render={() => (
-            <CreateRoom 
+            <CreateRoom
               handleAddRoom={this.handleAddRoom}
             />
           )}
