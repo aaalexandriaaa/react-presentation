@@ -63,6 +63,18 @@ class MeetingForm extends Component {
                                 <input name="agendaBody" id="name" type="text" value={this.state.formData.name} onChange={this.handleChange} required />
                             </div>
                         </div>
+                        <div>
+                            <div>
+                                <label htmlFor="name">Room Name</label>
+                                <input name="" id="name" type="text" value={this.state.formData.name} onChange={this.handleChange} required />
+                                <select value={this.state.value} onChange={this.handleChange}>
+                                    <option value="grapefruit">Grapefruit</option>
+                                    <option value="lime">Lime</option>
+                                    <option value="coconut">Coconut</option>
+                                    <option value="mango">Mango</option>
+                                </select>
+                            </div>
+                        </div>
                         <button className="btn btn-info"
                             type="submit"
                             disabled={this.state.invalidForm}
