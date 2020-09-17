@@ -38,7 +38,7 @@ class RoomForm extends Component {
                         <div>
                             <div>
                             <label htmlFor="occupancy">Occupancy</label>
-                            <input name="occupancyt" id="occupancy" type="text" value={this.state.formData.cast} onChange={this.handleChange} required/>
+                            <input name="occupancy" id="occupancy" type="text" value={this.state.formData.occupancy} onChange={this.handleChange} required/>
                             </div>
                         </div>
                         <button className="btn btn-info"
