@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const scheduleSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    time: { type: [Number], required: true },
     date: { type: String, required: true },
+    startTime: { type: String, required: true },
+    endTime: { type: String, required: true },
     peanutGallery: [String],
     meetingName: String,
     agendaBody: String
