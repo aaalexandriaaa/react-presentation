@@ -33,17 +33,14 @@ class App extends Component {
     }), () => this.props.history.push('/'));
   }
 
-
   async componentDidMount() {
     const rooms = await roomAPI.getAll();
     this.setState({ rooms })
   }
 
   handleAddMeeting = async newMeetingData => {
-    const newMeeting = await meetingAPI.create(newMeetingData);
-    this.setState(state => ({
-      meetings: [...state.meetings, newMeeting]
-    }), () => this.props.history.push('/'));
+    const newMeeting = await meetingAPI.create(newMeetingData)
+    .then(() => this.props.history.push('/'))
   }
 
   render() {

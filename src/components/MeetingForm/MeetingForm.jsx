@@ -10,7 +10,7 @@ class MeetingForm extends Component {
             peanutGallery: [''],
             meetingName: '',
             agendaBody: '',
-            meetingRoom: ''
+            meetingRoom: '5f63b528ef784d443238f9b5'
         },
     }
 
@@ -71,7 +71,7 @@ class MeetingForm extends Component {
                                 <select name="meetingRoom" onChange={this.handleChange} value={this.state.meetingRoom} required>
                                     {this.props.rooms.map(room =>
 
-                                        <option value={room._id}>{room.name}</option>
+                                        <option key={room._id} value={room._id}>{room.name}</option>
 
 
                                     )}

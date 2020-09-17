@@ -6,12 +6,15 @@ module.exports = {
 };
 
 function index(req, res) {
-  console.log("req.user", req.user);
-  User.find({}).then((users) => res.json(users));
+  Room.find({}).then((rooms) => res.json(rooms));
 }
 
 function create(req, res) {
-  Room.create(req.body)
-      .then(room => { res.json(room) })
-      .catch(err => { res.json(err) })
+  Room.findById(req.body.meetingRoom)
+    .then((room) => {
+      room.schedule.push(req.body)
+      room.save()
+        .then(room => { res.json(room) })
+        .catch(err => { res.json(err) })
+    })
 }
