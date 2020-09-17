@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import authService from "../../services/authService";
 import "./App.css";
+import AllRooms from "../AllRooms/AllRooms"
+import CreateMeeting from "../CreateMeeting/CreateMeeting"
+import CreateRoom from "../CreateRoom/CreateRoom"
 
 class App extends Component {
   state = {
@@ -21,17 +24,26 @@ class App extends Component {
   };
 
   render() {
-    const {user} = this.state
+    const { user } = this.state
     return (
       <>
         <NavBar user={user} handleLogout={this.handleLogout} />
         <Route
-          exact
-          path="/"
+          exact path="/"
           render={() => (
-            <main>
-              <h1>Welcome. This is an authorization template.</h1>
-            </main>
+            <AllRooms />
+          )}
+        />
+        <Route
+          exact path="/createroom"
+          render={() => (
+            <CreateRoom />
+          )}
+        />
+        <Route
+          exact path="/createmeeting"
+          render={() => (
+            <CreateMeeting />
           )}
         />
         <Route
