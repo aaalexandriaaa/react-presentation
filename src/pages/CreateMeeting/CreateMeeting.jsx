@@ -12,6 +12,7 @@ class CreateMeeting extends Component {
                 <h1>CREATE A MEETING</h1>
                 <MeetingForm
                     handleAddMeeting={this.props.handleAddMeeting}
+                    rooms={this.props.rooms}
                 />
             </>
         );
